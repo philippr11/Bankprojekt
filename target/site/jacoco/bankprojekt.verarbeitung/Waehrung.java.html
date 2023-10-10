@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Waehrung.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bankprojekt</a> &gt; <a href="index.source.html" class="el_package">bankprojekt.verarbeitung</a> &gt; <span class="el_source">Waehrung.java</span></div><h1>Waehrung.java</h1><pre class="source lang-java linenums">package bankprojekt.verarbeitung;
+
+/**
+ * Alle Währungen, die in unserem Bankprojekt zur Verfügung stehen
+ * @author philipprober
+ */
+<span class="fc" id="L7">public enum Waehrung {</span>
+<span class="fc" id="L8">    EUR(1),</span>
+<span class="fc" id="L9">    BGN(1.9558),</span>
+<span class="fc" id="L10">    DKK(61.62),</span>
+<span class="fc" id="L11">    MKD(7.4604);</span>
+
+    private final double kurs;
+
+<span class="fc" id="L15">    Waehrung(double umrechnungskurs){</span>
+<span class="fc" id="L16">        this.kurs = umrechnungskurs;</span>
+<span class="fc" id="L17">    }</span>
+
+    /**
+     * Diese Methode erwartet einen Euro Betrag und wandelt ihn in den jeweiligen Währungskurs um
+     * @param betrag ist die Höhe in Euro
+     * @return den jeweiligen Währungsbetrag
+     */
+    public double euroInWaehrungUmrechnen(double betrag){
+<span class="fc" id="L25">        double result = betrag * this.kurs;</span>
+<span class="fc" id="L26">        return result;</span>
+    }
+
+    /**
+     * Die Methode wandelt analog zur obigen andere Währungen in Euro um
+     * @param betrag ist die Höhe der Fremdwärhung
+     * @return ist die Eurosumme
+     */
+    public double waehrungInEuroUmrechnen(double betrag){
+<span class="fc" id="L35">        double result = betrag / this.kurs;</span>
+<span class="fc" id="L36">        return result;</span>
+    }
+
+    /**
+     * Hilfsfunktion, falls meine Währung mal nicht von FW in Euro oder von Euro in FW ist. HilfsRechnung über Euro
+     * @param betrag in fremdwährung
+     * @param neu Zielwährung
+     * @return Betrag in geforderter Zielwährung
+     */
+    public double festgelegteWaehrungInAngegebeneWaehrung(double betrag, Waehrung neu){
+<span class="fc" id="L46">        return neu.euroInWaehrungUmrechnen(this.waehrungInEuroUmrechnen(betrag));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

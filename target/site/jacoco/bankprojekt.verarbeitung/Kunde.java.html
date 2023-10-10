@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Kunde.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bankprojekt</a> &gt; <a href="index.source.html" class="el_package">bankprojekt.verarbeitung</a> &gt; <span class="el_source">Kunde.java</span></div><h1>Kunde.java</h1><pre class="source lang-java linenums">package bankprojekt.verarbeitung;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.FormatStyle;
+import java.util.Locale;
+
+/**
+ * Kunde einer Bank
+ * @author Dorothea Hubrich
+ */
+public class Kunde implements Comparable&lt;Kunde&gt;{
+
+	/**
+	 * Ein Musterkunde
+	 */
+<span class="fc" id="L18">	public static final Kunde MUSTERMANN = </span>
+<span class="fc" id="L19">			new Kunde(&quot;Max&quot;, &quot;Mustermann&quot;, &quot;zuhause&quot;, LocalDate.now());</span>
+	
+	/**
+	 * englische oder deutsche Anrede, je nach den Systemeinstellungen
+	 */
+	private static String ANREDE;   //von der Idee her final, wegen der Verwendung des static-Blocks leider nicht möglich.
+
+	/**
+	 * liefert die systemspezifische Anrede
+	 * @return systemspezifische Anrede
+	 */
+	public static String getAnrede() {
+<span class="nc" id="L31">		return ANREDE;</span>
+	}
+
+	/**
+	 * der Vorname
+	 */
+	private String vorname;
+	/**
+	 * Der Nachname
+	 */
+	private String nachname;
+	/**
+	 * Die Adresse
+	 */
+	private String adresse;
+	/**
+	 * Geburtstag
+	 */
+	private LocalDate geburtstag;
+
+	/**
+	 * erzeugt den Standardkunden Max Mustermann
+	 */
+	public Kunde() {
+<span class="nc" id="L55">		this(&quot;Max&quot;, &quot;Mustermann&quot;, &quot;Adresse&quot;, LocalDate.now());</span>
+<span class="nc" id="L56">	}</span>
+
+	/**
+	 * Erzeugt einen Kunden mit den übergebenen Werten
+	 * 
+	 * @param vorname Vorname
+	 * @param nachname Nachname
+	 * @param adresse Adresse
+	 * @param gebdat Geburtstag
+	 * @throws IllegalArgumentException wenn einer der Parameter null ist
+	 */
+<span class="fc" id="L67">	public Kunde(String vorname, String nachname, String adresse, LocalDate gebdat) {</span>
+<span class="pc bpc" id="L68" title="4 of 8 branches missed.">		if(vorname == null || nachname == null || adresse == null || gebdat == null)</span>
+<span class="nc" id="L69">			throw new IllegalArgumentException(&quot;null als Parameter nich erlaubt&quot;);</span>
+<span class="fc" id="L70">		this.vorname = vorname;</span>
+<span class="fc" id="L71">		this.nachname = nachname;</span>
+<span class="fc" id="L72">		this.adresse = adresse;</span>
+<span class="fc" id="L73">		this.geburtstag = gebdat;</span>
+		
+<span class="fc" id="L75">		Runtime umgebung = Runtime.getRuntime();</span>
+<span class="fc" id="L76">		Runnable r = new Zerstoerer();</span>
+<span class="fc" id="L77">		Thread t = new Thread(r);</span>
+<span class="fc" id="L78">		umgebung.addShutdownHook(t);</span>
+		
+<span class="fc" id="L80">	}</span>
+	
+	/**
+	 * Klasse für Aufräumarbeiten
+	 * @author Doro
+	 *
+	 */
+<span class="fc" id="L87">	private class Zerstoerer implements Runnable</span>
+	{
+		@Override
+		public void run() {
+<span class="nc" id="L91">			System.out.println(&quot;Kunde &quot; + Kunde.this.getName() + &quot; zerstört&quot;);</span>
+<span class="nc" id="L92">		}</span>
+	}
+
+	/**
+	 * Erzeugt einen Kunden mit den übergebenen Werten
+	 * 
+	 * @param vorname Vorname
+	 * @param nachname Nachname
+	 * @param adresse Adresse
+	 * @param gebdat Geburtstag im Format tt.mm.yy
+	 * @throws DateTimeParseException wenn das Format des übergebenen Datums nicht korrekt ist
+	 * @throws IllegalArgumentException wenn einer der Parameter null ist
+	 */
+	public Kunde(String vorname, String nachname, String adresse, String gebdat)  {
+<span class="nc" id="L106">		this(vorname, nachname, adresse, LocalDate.parse(gebdat,DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));</span>
+<span class="nc" id="L107">	}</span>
+
+	/**
+	 * gibt alle Daten des Kunden aus
+	 */
+	@Override
+	public String toString() {
+		String ausgabe;
+<span class="nc" id="L115">		DateTimeFormatter df = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);</span>
+<span class="nc" id="L116">		ausgabe = this.vorname + &quot; &quot; + this.nachname + System.getProperty(&quot;line.separator&quot;);</span>
+<span class="nc" id="L117">		ausgabe += this.adresse + System.getProperty(&quot;line.separator&quot;);</span>
+<span class="nc" id="L118">		ausgabe += df.format(this.geburtstag) + System.getProperty(&quot;line.separator&quot;);</span>
+<span class="nc" id="L119">		return ausgabe;</span>
+	}
+
+	/**
+	 * vollständiger Name des Kunden in der Form &quot;Nachname, Vorname&quot;
+	 * 
+	 * @return vollständiger Name des Kunden
+	 */
+	public String getName() {
+<span class="fc" id="L128">		return this.nachname + &quot;, &quot; + this.vorname;</span>
+	}
+
+	/**
+	 * Adresse des Kunden
+	 * 
+	 * @return Adresse des Kunden
+	 */
+	public String getAdresse() {
+<span class="nc" id="L137">		return adresse;</span>
+	}
+
+	/**
+	 * setzt die Adresse auf den angegebenen Wert
+	 * @param adresse neue Adresse
+	 * @throws IllegalArgumentException wenn adresse null ist
+	 */
+	public void setAdresse(String adresse) {
+<span class="nc bnc" id="L146" title="All 2 branches missed.">		if(adresse == null)</span>
+<span class="nc" id="L147">			throw new IllegalArgumentException(&quot;Adresse darf nicht null sein&quot;);</span>
+<span class="nc" id="L148">		this.adresse = adresse;</span>
+<span class="nc" id="L149">	}</span>
+
+	/**
+	 * Nachname des Kunden
+	 * @return Nachname des Kunden
+	 */
+	public String getNachname() {
+<span class="nc" id="L156">		return nachname;</span>
+	}
+
+	/**
+	 * setzt den Nachnamen auf den angegebenen Wert
+	 * @param nachname neuer Nachname
+	 * @throws IllegalArgumentException wenn nachname null ist
+	 */
+	public void setNachname(String nachname) {
+<span class="nc bnc" id="L165" title="All 2 branches missed.">		if(nachname == null)</span>
+<span class="nc" id="L166">			throw new IllegalArgumentException(&quot;Nachname darf nicht null sein&quot;);</span>
+<span class="nc" id="L167">		this.nachname = nachname;</span>
+<span class="nc" id="L168">	}</span>
+
+	/**
+	 * Vorname des Kunden
+	 * @return Vorname des Kunden
+	 */
+	public String getVorname() {
+<span class="nc" id="L175">		return vorname;</span>
+	}
+
+	/**
+	 * setzt den Vornamen auf den angegebenen Wert
+	 * @param vorname neuer Vorname
+	 * @throws IllegalArgumentException wenn vorname null ist
+	 */
+	public void setVorname(String vorname) {
+<span class="nc bnc" id="L184" title="All 2 branches missed.">		if(vorname == null)</span>
+<span class="nc" id="L185">			throw new IllegalArgumentException(&quot;Vorname darf nicht null sein&quot;);</span>
+<span class="nc" id="L186">		this.vorname = vorname;</span>
+<span class="nc" id="L187">	}</span>
+
+	/**
+	 * Geburtstag des Kunden
+	 * @return Geburtstag des Kunden
+	 */
+	public LocalDate getGeburtstag() {
+<span class="nc" id="L194">		return geburtstag;</span>
+	}
+
+	@Override
+	public int compareTo(Kunde arg0) {
+<span class="nc" id="L199">		return this.getName().compareTo(arg0.getName());</span>
+	}
+
+	static
+	{
+<span class="pc bpc" id="L204" title="1 of 2 branches missed.">		if(Locale.getDefault().getCountry().equals(&quot;DE&quot;))</span>
+<span class="fc" id="L205">			ANREDE = &quot;Hallo Benutzer!&quot;;</span>
+		else
+<span class="nc" id="L207">			ANREDE = &quot;Dear Customer!&quot;;</span>
+<span class="fc" id="L208">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

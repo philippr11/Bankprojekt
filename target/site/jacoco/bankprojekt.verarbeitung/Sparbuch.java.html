@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Sparbuch.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bankprojekt</a> &gt; <a href="index.source.html" class="el_package">bankprojekt.verarbeitung</a> &gt; <span class="el_source">Sparbuch.java</span></div><h1>Sparbuch.java</h1><pre class="source lang-java linenums">package bankprojekt.verarbeitung;
+
+import java.time.LocalDate;
+
+/**
+ * ein Sparbuch, d.h. ein Konto, das nur recht eingeschränkt genutzt
+ * werden kann. Insbesondere darf man monatlich nur höchstens 2000€
+ * abheben, wobei der Kontostand nie unter 0,50€ fallen darf. 
+ * @author Doro
+ *
+ */
+public class Sparbuch extends Konto {
+	/**
+	 * Zinssatz, mit dem das Sparbuch verzinst wird. 0,03 entspricht 3%
+	 */
+	private double zinssatz;
+	
+	/**
+	 * Monatlich erlaubter Gesamtbetrag für Abhebungen
+	 */
+	public static final double ABHEBESUMME = 2000;
+	
+	/**
+	 * Betrag, der im aktuellen Monat bereits abgehoben wurde
+	 */
+<span class="nc" id="L26">	private double bereitsAbgehoben = 0;</span>
+
+	/**
+	 * Monat und Jahr der letzten Abhebung
+	 */
+<span class="nc" id="L31">	private LocalDate zeitpunkt = LocalDate.now();</span>
+	
+	/**
+	* ein Standard-Sparbuch
+	*/
+<span class="nc" id="L36">	public Sparbuch() {</span>
+<span class="nc" id="L37">		zinssatz = 0.03;</span>
+<span class="nc" id="L38">	}</span>
+
+	/**
+	* ein Standard-Sparbuch, das inhaber gehört und die angegebene Kontonummer hat
+	* @param inhaber der Kontoinhaber
+	* @param kontonummer die Wunsch-Kontonummer
+	* @throws IllegalArgumentException wenn inhaber null ist
+	*/
+	public Sparbuch(Kunde inhaber, long kontonummer) {
+<span class="nc" id="L47">		super(inhaber, kontonummer);</span>
+<span class="nc" id="L48">		zinssatz = 0.03;</span>
+<span class="nc" id="L49">	}</span>
+	
+	@Override
+	public String toString()
+	{
+<span class="nc" id="L54">    	String ausgabe = &quot;-- SPARBUCH --&quot; + System.lineSeparator() +</span>
+<span class="nc" id="L55">    	super.toString()</span>
+<span class="nc" id="L56">    	+ &quot;Zinssatz: &quot; + this.zinssatz * 100 +&quot;%&quot; + System.lineSeparator();</span>
+<span class="nc" id="L57">    	return ausgabe;</span>
+	}
+
+	@Override
+	/**
+	 * ergänzung durch richtige Währung
+	 */
+	public boolean abheben (double betrag) throws GesperrtException{
+<span class="nc bnc" id="L65" title="All 6 branches missed.">		if (betrag &lt; 0 || Double.isNaN(betrag)|| Double.isInfinite(betrag)) {</span>
+<span class="nc" id="L66">			throw new IllegalArgumentException(&quot;Betrag ungültig&quot;);</span>
+		}
+<span class="nc bnc" id="L68" title="All 2 branches missed.">		if(this.isGesperrt())</span>
+		{
+<span class="nc" id="L70">			GesperrtException e = new GesperrtException(this.getKontonummer());</span>
+<span class="nc" id="L71">			throw e;</span>
+		}
+<span class="nc" id="L73">		LocalDate heute = LocalDate.now();</span>
+<span class="nc bnc" id="L74" title="All 4 branches missed.">		if(heute.getMonth() != zeitpunkt.getMonth() || heute.getYear() != zeitpunkt.getYear())</span>
+		{
+<span class="nc" id="L76">			this.bereitsAbgehoben = 0;</span>
+		}
+<span class="nc" id="L78">		double waehrungsbereinigteAbhebesumme = getAktuelleWaehrung().euroInWaehrungUmrechnen(ABHEBESUMME);</span>
+<span class="nc bnc" id="L79" title="All 4 branches missed.">		if (getKontostand() - betrag &gt;= 0.50 &amp;&amp; </span>
+				 bereitsAbgehoben + betrag &lt;= waehrungsbereinigteAbhebesumme)
+		{
+<span class="nc" id="L82">			setKontostand(getKontostand() - betrag);</span>
+<span class="nc" id="L83">			bereitsAbgehoben += betrag;</span>
+<span class="nc" id="L84">			this.zeitpunkt = LocalDate.now();</span>
+<span class="nc" id="L85">			return true;</span>
+		}
+		else
+<span class="nc" id="L88">			return false;</span>
+	}
+
+	/**
+	 * Ergänzt Währungswechsel für bereitsAbgehoben in Sparbuch Klasse
+	 * @param neu neue Währung
+	 */
+	@Override
+	public void waehrungswechsel(Waehrung neu){
+
+<span class="nc" id="L98">		this.bereitsAbgehoben = getAktuelleWaehrung().festgelegteWaehrungInAngegebeneWaehrung(this.bereitsAbgehoben, neu);</span>
+<span class="nc" id="L99">		super.waehrungswechsel(neu);</span>
+<span class="nc" id="L100">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,0 +1,11 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Bankprojekt,default,KontenSpielereien,111,0,2,0,27,0,3,0,2,0
+Bankprojekt,spielereien,Waehrungsspielereien,166,0,0,0,35,0,2,0,2,0
+Bankprojekt,bankprojekt.verarbeitung,GesperrtException,0,5,0,0,0,2,0,1,0,1
+Bankprojekt,bankprojekt.verarbeitung,Kontoart,35,0,0,0,8,0,3,0,3,0
+Bankprojekt,bankprojekt.verarbeitung,Girokonto,120,71,36,10,25,15,26,6,5,4
+Bankprojekt,bankprojekt.verarbeitung,Kunde,106,61,11,5,29,17,20,3,12,3
+Bankprojekt,bankprojekt.verarbeitung,Waehrung,0,59,0,0,0,13,0,5,0,5
+Bankprojekt,bankprojekt.verarbeitung,Sparbuch,131,0,16,0,30,0,13,0,5,0
+Bankprojekt,bankprojekt.verarbeitung,Kunde.Zerstoerer,7,6,0,0,2,1,1,1,1,1
+Bankprojekt,bankprojekt.verarbeitung,Konto,203,84,27,3,47,25,27,11,12,11

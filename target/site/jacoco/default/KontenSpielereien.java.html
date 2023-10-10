@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>KontenSpielereien.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bankprojekt</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">KontenSpielereien.java</span></div><h1>KontenSpielereien.java</h1><pre class="source lang-java linenums">import java.time.LocalDate;
+import bankprojekt.verarbeitung.GesperrtException;
+import bankprojekt.verarbeitung.Girokonto;
+import bankprojekt.verarbeitung.Konto;
+import bankprojekt.verarbeitung.Kontoart;
+import bankprojekt.verarbeitung.Kunde;
+import bankprojekt.verarbeitung.Sparbuch;
+
+/**
+ * Testprogramm für Konten
+ * @author Doro
+ *
+ */
+<span class="nc" id="L14">public class KontenSpielereien {</span>
+
+	/**
+	 * Testprogramm für Konten
+	 * @param args wird nicht benutzt
+	 */
+	public static void main(String[] args) {
+<span class="nc" id="L21">		Kontoart art = Kontoart.SPARBUCH;</span>
+<span class="nc" id="L22">		System.out.println(art.name() + &quot; &quot; + art.ordinal());</span>
+		
+<span class="nc" id="L24">		System.out.println(&quot;Unser Angebot:&quot;);</span>
+<span class="nc" id="L25">		Kontoart[] alle = Kontoart.values();</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">		for(Kontoart vorhanden: alle)</span>
+		{
+<span class="nc" id="L28">			System.out.println(vorhanden+ &quot;: &quot; + vorhanden.getWerbebotschaft());</span>
+		}
+		
+<span class="nc" id="L31">		String eingabe = &quot;GIROKONTO&quot;;</span>
+<span class="nc" id="L32">		art = Kontoart.valueOf(eingabe);</span>
+<span class="nc" id="L33">		System.out.println(art.toString()+&quot;: &quot;+ art.getWerbebotschaft());</span>
+<span class="nc" id="L34">		System.out.println(&quot;--------------&quot;);</span>
+		
+		
+<span class="nc" id="L37">		Kunde ich = new Kunde(&quot;Dorothea&quot;, &quot;Hubrich&quot;, &quot;zuhause&quot;, LocalDate.parse(&quot;1976-07-13&quot;));</span>
+
+<span class="nc" id="L39">		Girokonto meinGiro = new Girokonto(ich, 1234, 1000.0);</span>
+<span class="nc" id="L40">		meinGiro.einzahlen(50);</span>
+<span class="nc" id="L41">		System.out.println(meinGiro);</span>
+		
+<span class="nc" id="L43">		Konto meinSpar = new Sparbuch(ich, 9876);</span>
+<span class="nc" id="L44">		meinSpar.einzahlen(50);</span>
+<span class="nc" id="L45">		System.out.println(&quot;Ausprobiert: -----------&quot;);</span>
+<span class="nc" id="L46">		meinSpar.ausgeben(); //toString von Sparbuch!</span>
+<span class="nc" id="L47">		System.out.println(&quot;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;);</span>
+		try
+		{
+<span class="nc" id="L50">			boolean hatGeklappt = meinSpar.abheben(70);</span>
+<span class="nc" id="L51">			System.out.println(&quot;Abhebung hat geklappt: &quot; + hatGeklappt);</span>
+<span class="nc" id="L52">			System.out.println(meinSpar);</span>
+		}
+<span class="nc" id="L54">		catch (GesperrtException e)</span>
+		{
+<span class="nc" id="L56">			System.out.println(&quot;Zugriff auf gesperrtes Konto - Polizei rufen!&quot;);</span>
+<span class="nc" id="L57">		}</span>
+<span class="nc" id="L58">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

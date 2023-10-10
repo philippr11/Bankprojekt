@@ -1,0 +1,68 @@
+@options
+@packages
+@argfile
+-classpath
+'/Users/philipprober/.m2/repository/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar:/Users/philipprober/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/philipprober/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/philipprober/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/philipprober/.m2/repository/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar:/Users/philipprober/.m2/repository/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar:/Users/philipprober/.m2/repository/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar:/Users/philipprober/.m2/repository/org/decimal4j/decimal4j/1.0.3/decimal4j-1.0.3.jar'
+-encoding
+'UTF-8'
+-package
+--release
+20
+-sourcepath
+'/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/src/main/java:/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Bankprojekt 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Bankprojekt 1.0-SNAPSHOT API'
+bankprojekt.verarbeitung
+'/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/src/main/java/KontenSpielereien.java'
+'/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/src/main/java/Waehrungsspielereien.java'
+/Users/philipprober/.m2/repository/com/google/guava/guava/31.1-jre/guava-31.1-jre.jar = 1682340392176
+/Users/philipprober/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar = 1681806292310
+/Users/philipprober/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar = 1681806292364
+/Users/philipprober/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar = 1681806292368
+/Users/philipprober/.m2/repository/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar = 1681806356048
+/Users/philipprober/.m2/repository/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar = 1682340391632
+/Users/philipprober/.m2/repository/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar = 1681806356095
+/Users/philipprober/.m2/repository/org/decimal4j/decimal4j/1.0.3/decimal4j-1.0.3.jar = 1682340253476
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/src/main/java/.DS_Store = 1682538705901
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/src/main/java/KontenSpielereien.java = 1681371096000
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/src/main/java/Waehrungsspielereien.java = 1658326130000
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/src/main/java = 1682538716000
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/generated-sources/annotations = 1682253106000
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/constant-values.html = 1682542185011
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/tag-search-index.js = 1682542185176
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/overview-tree.html = 1682542185138
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/module-search-index.js = 1682542185174
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/index.html = 1682542185145
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/package-search-index.js = 1682542185175
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/package-use.html = 1682542185109
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/KontenSpielereien.html = 1682542184579
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/serialized-form.html = 1682542185037
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/index-all.html = 1682542185199
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/allpackages-index.html = 1682542185173
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/member-search-index.js = 1682542185176
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/copy.svg = 1682542185220
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/script.js = 1682542185219
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/stylesheet.css = 1682542185219
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/search-page.js = 1682542185223
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/overview-summary.html = 1682542185205
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/help-doc.html = 1682542185215
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/package-summary.html = 1682542184972
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/package-tree.html = 1682542184977
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/element-list = 1682542184960
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/search.html = 1682542185202
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/allclasses-index.html = 1682542185170
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/type-search-index.js = 1682542185175
+/Users/philipprober/Desktop/Studium/Semester 3/Prog3/Bankprojekt/target/site/apidocs/search.js = 1682542185222
